@@ -1,11 +1,19 @@
 #include <stdio.h>
 int main (){
+	int space = 0, assigned =0, accept = 0, reject = 0;
 	int zoneA = 0, zoneB = 0, zoneC = 0, cars = 0, bikes = 0, vans = 0, no, i;
 	char category, permit, type, emergency;
 	printf("Enter the no of vehicles : ");
-	scanf("%d", &no);
-	for (i=1; i<=no; i++){
+	scanf("%d", &no);   // taking the number of the vehicle 
+	for (i=1; i<=no; i++){  //main for loop starts 
 		
+	///USER INPUT SECTION 	STARTS
+
+		//1st do while loop 
+		//function : Taking input in char datatype and saving it in a char variable type ,
+		//it is checking whether the user typed correct info or not and if they typed wrong the loop will execute again 
+		//the main info it is taking from the user is about the vehicle type i.e bikes or van 
+
 		do{
 		printf("\n1. Cars(C)\n2. Bikes(B)\n3. Vans(V)\nEnter the vehicle type : ");
 		scanf(" %c", &type);
@@ -13,7 +21,13 @@ int main (){
              	printf("Invalid type, you are requested to enter the information again!");
 			 }
 	}while(type!= 'C' && type!='V' && type !='B');
-	    
+	   
+	  
+	    //2nd do while loop 
+		//funtion : taking the input in char saving it in a variable  char category 
+		//it is checking whether the user typed correct info or not and if they typed wrong the loop will execute again 
+		//it is taking info from the user about the category of the vhiecle i.e is it for students or faculty or visistors 
+
 	   do{
 		printf("\n1. Faculty(F)\n2. Students(S)\n3. Visitors/Guests(G)\nEnter the user category : ");
 		scanf(" %c", &category);
@@ -22,6 +36,11 @@ int main (){
 			 }
 	}while(category!= 'F' && category!='S' && category !='G');
 	
+
+	   //3rd do while loop
+	   //function : taking the input in char saving it in a variable char permit 
+	   //it is checking whether the user typed correct info or not and if they typed wrong the loop will execute again 
+	   //it is taking info from the user about their parking  permit validity 
 	    do{
 		printf("\nDo the vehicle has a valid parking permit (Y/N) ? ");
 		scanf(" %c", &permit);
@@ -30,6 +49,10 @@ int main (){
 			 }
 	}while(permit != 'Y' && permit != 'N');
 	    
+
+
+
+	   //a code block to check if the non permit  vehicle is an emergency one if yes then it will give access 
 	    if (permit = 'N'){           
 	    	
 	    	do {
@@ -45,18 +68,25 @@ int main (){
 			emergency ='N';	
 		}
 		
+		//////////INPUT SECTION ENDS
 		
 		
-		int space = 0, assigned =0, accept = 0, reject = 0;
-		
+
+		///an if statement to allocate 2x space for van 
 		
 	    if (type = 'V'){
 	    	space =2;
 		} else {
 			space = 1;
 		}
-			    
+		
+		
+	////////OUTPUT SECTION FOR EACH CATEGORY STARTS HERE 	
+
 	    //faculty
+		///this code block accepts the vehicle in the block a if the permit is valid (Y) or the emergency is valid (Y)
+		///it will rejects the vehicle if the space in block is full 
+
 	    if (category =='F'){
 	    	if (permit == 'Y' || emergency == 'Y'){
 	    		if (zoneA + space <= 20 ){
@@ -76,6 +106,8 @@ int main (){
 
 	    
 	    //student 
+        
+
 	   else if (category == 'S'){
 	    	if (permit == 'Y' || emergency == 'Y'){
 	    		if (zoneB + space <= 40){
@@ -133,7 +165,10 @@ int main (){
 		} else {
 			reject++;
 		}
-	    
+	
+	
+      // main for loop  ends here "edited by hussain "
+	  
 	}
 	    
 	    
